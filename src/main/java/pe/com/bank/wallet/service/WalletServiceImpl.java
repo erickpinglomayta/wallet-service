@@ -62,8 +62,7 @@ public class WalletServiceImpl implements WalletService{
             	
         });
         
-   
-        
+    
 	}
 	
 	public Mono<WalletDocument> saveWallet(WalletDocument walletDocument){
@@ -118,11 +117,8 @@ public class WalletServiceImpl implements WalletService{
 							sendWalletYankiTransaction(walletOperationDTO);
 							
 							if(sourceWallet.getDebitCardId()!=null || destinationWallet.getDebitCardId()!=null) {
-								WalletOperationAccountDTO walletOperationAccountDTO = new WalletOperationAccountDTO();
-								walletOperationAccountDTO.setAmount(walletOperationDTO.getAmount());
-								walletOperationAccountDTO.setSourceCardId(sourceWallet.getDebitCardId());
-								walletOperationAccountDTO.setDestinationCardId(destinationWallet.getDebitCardId());
-								senWalletOperationAccount(walletOperationAccountDTO);
+								senWalletOperationAccount(new WalletOperationAccountDTO(sourceWallet.getDebitCardId(),
+										destinationWallet.getDebitCardId(),walletOperationDTO.getAmount()));
 							}
 								
 							return Mono.just(new WalletResponseDTO("0000","successful operation"));

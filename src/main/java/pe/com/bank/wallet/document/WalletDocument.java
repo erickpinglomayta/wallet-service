@@ -7,13 +7,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "wallet")
-public class WalletDocument implements Serializable {
+public class WalletDocument  {
 	
 	@Id
 	private String walletId;
