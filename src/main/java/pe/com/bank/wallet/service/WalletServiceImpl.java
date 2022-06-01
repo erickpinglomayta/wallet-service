@@ -9,10 +9,6 @@ import org.springframework.data.redis.core.ReactiveRedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
-
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import pe.com.bank.wallet.document.WalletDocument;
 import pe.com.bank.wallet.dto.WalletDebitCardDTO;
 import pe.com.bank.wallet.dto.WalletOperationAccountDTO;
@@ -30,7 +26,7 @@ public class WalletServiceImpl implements WalletService{
 	@Autowired
 	StreamBridge streamBridge;
 	
-	RedisTemplate redisTemplate;
+	RedisTemplate<String, WalletDocument> redisTemplate;
 	
 	private final ReactiveRedisOperations<String, WalletDocument> operations;
 	
